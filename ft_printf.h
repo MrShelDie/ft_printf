@@ -3,6 +3,7 @@
 
 # include <stdarg.h>
 # include <unistd.h>
+# include <stdlib.h>
 # include "libft/libft.h"
 
 # define FAILE 0
@@ -24,12 +25,6 @@ typedef struct s_format
 	int				width;
 	int				prec;
 }	t_format;
-
-typedef struct s_str
-{
-	char	*str;
-	size_t	size;
-}	t_str;
 
 int		parse(const char **str, t_format *format);
 void	init_format(t_format *format);

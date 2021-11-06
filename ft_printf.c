@@ -49,6 +49,6 @@ int	ft_printf(const char *str, ...)
 
 int main(void)
 {
-	ft_printf("_aaa_% +++++-0%aaaa_");
+	ft_printf("_% +#+3.5c_\n", 'p');
 	return (0);
 }
