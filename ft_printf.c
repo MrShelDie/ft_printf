@@ -9,7 +9,7 @@ static int	print_spec(const char **str, va_list args, int *printed_count)
 	init_format(&format);
 	if (!parse(str, &format))
 		return (FAILE);
-	print_tab(str, &format, args, printed_count);
+	print_tab(&format, args, printed_count);
 	return (SUCCESS);
 }
 
@@ -49,6 +49,6 @@ int	ft_printf(const char *str, ...)
 
 int main(void)
 {
-	ft_printf("_% +#+3.5c_\n", 'p');
+	ft_printf("_% --#+0.10s_%2.3%%%%-2.3c_", "abcd", '2');
 	return (0);
 }
