@@ -12,6 +12,12 @@ static void	handle_flags(t_format *format)
 		|| conv == 'p' || conv == '%'
 	)
 		format->flag_zero = FALSE;
+	if (!format->is_prec_default
+		&& (conv == 'd' || conv == 'i'
+			|| conv == 'u' || conv == 'x'
+			|| conv == 'X')
+	)
+		format->flag_zero = FALSE;
 	if (format->flag_plus)
 		format->flag_space = FALSE;
 }

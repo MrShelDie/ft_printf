@@ -15,7 +15,7 @@
 // 	return (tab);
 // }
 
-void	init_tab(t_format *format, unsigned char *tab, int size)
+void	init_tab(t_format *format, char *tab, int size)
 {
 	if (format->flag_zero)
 		ft_memset(tab, '0', size - 1);

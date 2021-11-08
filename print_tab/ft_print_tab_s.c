@@ -43,7 +43,7 @@ void	print_tab_s(
 		*error = 1;
 		return ;
 	}
-	init_tab(format, (unsigned char *)tab, format->width + 1);
+	init_tab(format, tab, format->width + 1);
 	putstr_tab(format, tab, arg);
 	free(tab);
 	*printed_count += format->width;

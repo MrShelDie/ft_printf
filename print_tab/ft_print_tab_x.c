@@ -13,7 +13,15 @@ static int	get_tab_prec(t_format *format, unsigned int arg)
 
 static int	get_tab_width(t_format *format)
 {
-	// TODO
+	int	width;
+
+	width = format->prec;
+	if (format->flag_sharp)
+		width += 2;
+	if (!format->is_width_default && format->width > width)
+		return (format->width);
+	else
+		return (width);
 }
 
 void	print_tab_x(
@@ -25,5 +33,15 @@ void	print_tab_x(
 
 	arg = va_arg(args, unsigned int);
 	format->prec = get_tab_prec(format, arg);
+	format->width = get_tab_width(format);
+	tab = (char *)malloc(sizeof(char) * (format->width + 1));
+	if (!tab)
+	{
+		*error = 1;
+		return ;
+	}
+	init_tab(format, tab, format->width + 1);
 	// TODO
+	free(tab);
+	*printed_count += format->width;
 }
