@@ -33,12 +33,17 @@ void	get_width(const char **str, t_format *format);
 void	get_prec(const char **str, t_format *format);
 int		get_conv(const char **str, t_format *format);
 
-void	init_tab(t_format *format, unsigned char *tab, int size);
+void	init_tab(t_format *format, char *tab, int size);
 void	print_tab(t_format *format, va_list args, int *printed_count);
 void	print_tab_perc(int *printed_count);
 void	print_tab_c(t_format *format, va_list args,
 			int *printed_count, int *error);
 void	print_tab_s(t_format *format, va_list args,
 			int *printed_count, int *error);
+void	print_tab_x(t_format *format, va_list args,
+			int *printed_count, int *error);
+
+char	*ft_itoa_base_prefix(unsigned int num, char *base,
+			unsigned int base_size, t_format *format);
 
 #endif

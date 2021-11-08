@@ -1,20 +1,22 @@
 # include "libft.h"
 
-int	ft_ndigit_base(long int num, unsigned long int base)
+int	ft_ndigit_base(int num, unsigned int base)
 {
-	long long int	lnum;
-	long long int	lbase;
-	int				count;
+	long int	lnum;
+	long int	lbase;
+	int			count;
 
+	if (base == 0)
+		return (0);
 	count = 0;
-	lnum = (long long int)num;
-	lbase = (long long int)base;
+	lnum = (long int)num;
+	lbase = (long int)base;
 	if (num < 0)
 	{
 		lnum *= -1;
 		count++;
 	}
-	while (lnum / lbase > 0)
+	while (lnum != 0)
 	{
 		lnum /= lbase;
 		count++;

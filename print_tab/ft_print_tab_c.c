@@ -10,7 +10,7 @@ static int	get_tab_width(t_format *format)
 	return (width);
 }
 
-static void	putch_tab(t_format *format, unsigned char *tab, unsigned char arg)
+static void	putch_tab(t_format *format, char *tab, unsigned char arg)
 {
 	if (format->flag_minus)
 		tab[0] = arg;
@@ -23,12 +23,12 @@ void	print_tab_c(
 	t_format *format, va_list args, int *printed_count, int *error
 )
 {
-	unsigned char	*tab;
+	char			*tab;
 	unsigned char	arg;
 
 	arg = (unsigned char)va_arg(args, int);
 	format->width = get_tab_width(format);
-	tab = (unsigned char *)malloc(sizeof(char) * (format->width + 1));
+	tab = (char *)malloc(sizeof(char) * (format->width + 1));
 	if (!tab)
 	{
 		*error = 1;

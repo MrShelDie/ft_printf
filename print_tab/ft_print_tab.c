@@ -37,6 +37,6 @@ void	print_tab(t_format *format,
 		print_tab_c(format, args, printed_count, &error);
 	else if (conv == 's')
 		print_tab_s(format, args, printed_count, &error);
-	else if (conv == 'x')
-		print_tab_x()
+	else if (conv == 'x' || conv == 'X')
+		print_tab_x(format, args, printed_count, &error);
 }

@@ -49,6 +49,6 @@ int	ft_printf(const char *str, ...)
 
 int main(void)
 {
-	ft_printf("_% --#+0.10s_%2.3%%%%-2.3c_", "abcd", '2');
+	ft_printf("_%-#X_", 237);
 	return (0);
 }
