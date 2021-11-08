@@ -4,7 +4,7 @@ static int	get_tab_prec(t_format *format, unsigned int arg)
 {
 	int	arg_len;
 
-	arg_len = ft_ndigit_base(arg, 16);
+	arg_len = ft_nudigit_base(arg, 16);
 	if (!format->is_prec_default && format->prec > arg_len)
 		return (format->prec);
 	else
