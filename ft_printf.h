@@ -57,8 +57,7 @@ void	print_tab_p(t_format *format, void *arg,
 void	print_tab_u(t_format *format, unsigned int arg,
 			int *printed_count, int *error);
 
-char	*ft_itoa_base(size_t num, char *base,
-			size_t base_size, t_format *format);
+char	*utoa_prec_base(size_t num, char *base, size_t base_size, int prec);
 
 int		ft_printf(const char *str, ...);
 

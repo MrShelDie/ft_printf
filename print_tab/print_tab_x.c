@@ -57,9 +57,9 @@ static int	put_tab(t_format *format, char *tab, size_t arg)
 	char	*num_str;
 
 	if (format->conv == 'X')
-		num_str = ft_itoa_base(arg, "0123456789ABCDEF", 16, format);
+		num_str = utoa_prec_base(arg, "0123456789ABCDEF", 16, format->prec);
 	else
-		num_str = ft_itoa_base(arg, "0123456789abcdef", 16, format);
+		num_str = utoa_prec_base(arg, "0123456789abcdef", 16, format->prec);
 	if (!num_str)
 		return (FAILE);
 	fill_tab(format, tab, num_str);

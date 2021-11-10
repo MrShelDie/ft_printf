@@ -23,7 +23,7 @@ static int	put_tab(t_format *format, char *tab, unsigned int arg)
 {
 	char	*num_str;
 
-	num_str = ft_itoa_base(arg, "0123456789", 10, format);
+	num_str = utoa_prec_base(arg, "0123456789", 10, format->prec);
 	if (!num_str)
 		return (FAILE);
 	if (format->flag_minus)
