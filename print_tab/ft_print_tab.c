@@ -24,17 +24,21 @@ static void	handle_flags(t_format *format)
 
 static void	get_arg(t_arg *arg, va_list args, char conv)
 {
-	if (conv == 'c')
-		arg->c = (unsigned char)va_arg(args, int);
+	if (conv == 'i' || conv == 'd')
+		arg->i = va_arg(args, int);
 	else if (conv == 's')
 		arg->s = va_arg(args, const char *);
-	else if (conv == 'x' || conv == 'X')
-		arg->x = va_arg(args, unsigned int);
+	else if (conv == 'c')
+		arg->c = (unsigned char)va_arg(args, int);
 	else if (conv == 'p')
 		arg->p = va_arg(args, void *);
+	else if (conv == 'x' || conv == 'X')
+		arg->x = va_arg(args, unsigned int);
+	else if (conv == 'u')
+		arg->u = va_arg(args, unsigned int);
 }
 
-void	print_tab(t_format *format,
+int	print_tab(t_format *format,
 			va_list args, int *printed_count)
 {
 	char	conv;
@@ -45,14 +49,21 @@ void	print_tab(t_format *format,
 	conv = format->conv;
 	handle_flags(format);
 	get_arg(&arg, args, conv);
-	if (conv == '%')
-		print_tab_perc(printed_count);
-	else if (conv == 'c')
-		print_tab_c(format, arg.c, printed_count, &error);
+	if (conv == 'i' || conv == 'd')
+		// TODO
 	else if (conv == 's')
 		print_tab_s(format, arg.s, printed_count, &error);
-	else if (conv == 'x' || conv == 'X')
-		print_tab_x(format, arg.x, printed_count, &error);
+	else if (conv == 'c')
+		print_tab_c(format, arg.c, printed_count, &error);
 	else if (conv == 'p')
 		print_tab_p(format, arg.p, printed_count, &error);
+	else if (conv == 'x' || conv == 'X')
+		print_tab_x(format, arg.x, printed_count, &error);
+	else if (conv == 'u')
+		print_tab_u(format, arg.u, printed_count, &error);
+	else if (conv == '%')
+		print_tab_perc(printed_count);
+	if (error)
+		return (FAILE);
+	return (SUCCESS);
 }

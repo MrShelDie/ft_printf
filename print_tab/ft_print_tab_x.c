@@ -9,8 +9,7 @@ static int	get_tab_prec(t_format *format, size_t arg)
 	arg_len = ft_unumlen_base(arg, 16);
 	if (!format->is_prec_default && format->prec > arg_len)
 		return (format->prec);
-	else
-		return (arg_len);
+	return (arg_len);
 }
 
 static int	get_tab_width(t_format *format)
@@ -22,8 +21,7 @@ static int	get_tab_width(t_format *format)
 		width += 2;
 	if (!format->is_width_default && format->width > width)
 		return (format->width);
-	else
-		return (width);
+	return (width);
 }
 
 static void	fill_tab(t_format *format, char *tab, char *num_str)
@@ -54,7 +52,7 @@ static void	fill_tab(t_format *format, char *tab, char *num_str)
 	}
 }
 
-static int	puthex_tab(t_format *format, char *tab, size_t arg)
+static int	put_tab(t_format *format, char *tab, size_t arg)
 {
 	char	*num_str;
 
@@ -87,7 +85,7 @@ void	print_tab_x(
 		return ;
 	}
 	init_tab(format, tab, format->width + 1);
-	if (!puthex_tab(format, tab, arg))
+	if (!put_tab(format, tab, arg))
 	{
 		*error = 1;
 		free(tab);

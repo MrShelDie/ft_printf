@@ -30,9 +30,10 @@ typedef union u_arg
 {
 	unsigned char	c;
 	unsigned int	x;
+	unsigned int	u;
 	const char		*s;
 	void			*p;
-	size_t			i;
+	int				i;
 }	t_arg;
 
 int		parse(const char **str, t_format *format);
@@ -52,6 +53,8 @@ void	print_tab_s(t_format *format, const char *arg,
 void	print_tab_x(t_format *format, size_t arg,
 			int *printed_count, int *error);
 void	print_tab_p(t_format *format, void *arg,
+			int *printed_count, int *error);
+void	print_tab_u(t_format *format, unsigned int arg,
 			int *printed_count, int *error);
 
 char	*ft_itoa_base(size_t num, char *base,

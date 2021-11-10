@@ -7,8 +7,7 @@ static int	get_tab_prec(t_format *format, const char *arg)
 	arg_len = ft_strlen(arg);
 	if (!format->is_prec_default && format->prec < arg_len)
 		return (format->prec);
-	else
-		return (arg_len);
+	return (arg_len);
 }
 
 static int	get_tab_width(t_format *format)
@@ -18,7 +17,7 @@ static int	get_tab_width(t_format *format)
 	return (format->prec);
 }
 
-static void	putstr_tab(t_format *format, char *tab, const char *arg)
+static void	put_tab(t_format *format, char *tab, const char *arg)
 {
 	if (format->flag_minus)
 		ft_memcpy(tab, arg, format->prec);
@@ -44,7 +43,7 @@ void	print_tab_s(
 		return ;
 	}
 	init_tab(format, tab, format->width + 1);
-	putstr_tab(format, tab, arg);
+	put_tab(format, tab, arg);
 	free(tab);
 	*printed_count += format->width;
 }

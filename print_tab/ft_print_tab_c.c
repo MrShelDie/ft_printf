@@ -10,7 +10,7 @@ static int	get_tab_width(t_format *format)
 	return (width);
 }
 
-static void	putch_tab(t_format *format, char *tab, unsigned char arg)
+static void	put_tab(t_format *format, char *tab, unsigned char arg)
 {
 	if (format->flag_minus)
 		tab[0] = arg;
@@ -33,7 +33,7 @@ void	print_tab_c(
 		return ;
 	}
 	init_tab(format, tab, format->width + 1);
-	putch_tab(format, tab, arg);
+	put_tab(format, tab, arg);
 	free(tab);
 	*printed_count += format->width;
 }

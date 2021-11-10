@@ -9,7 +9,8 @@ static int	print_spec(const char **str, va_list args, int *printed_count)
 	init_format(&format);
 	if (!parse(str, &format))
 		return (FAILE);
-	print_tab(&format, args, printed_count);
+	if (!print_tab(&format, args, printed_count))
+		return (FAILE);
 	return (SUCCESS);
 }
 
