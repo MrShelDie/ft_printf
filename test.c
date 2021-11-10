@@ -3,7 +3,7 @@
 
 int main(void)
 {
-	ft_printf("%2u", 1);
+	ft_printf("%020d", -42000);
     //printf("%d", i);
 
 

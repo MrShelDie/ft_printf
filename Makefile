@@ -1,9 +1,10 @@
 SRC	= \
 ft_printf.c	\
-parser/ft_parser_utils.c	parser/ft_parser.c	\
-print_tab/ft_init_tab.c		print_tab/ft_print_tab_c.c	print_tab/ft_print_tab_perc.c	\
-print_tab/ft_print_tab_s.c	print_tab/ft_print_tab_x.c	print_tab/ft_print_tab.c		\
-print_tab/ft_print_tab_p.c	print_tab/ft_print_tab_u.c	print_tab_utils/ft_itoa_base.c	\
+parser/parser_utils.c		parser/parser.c											\
+print_tab/init_tab.c		print_tab/print_tab_c.c		print_tab/print_tab_perc.c	\
+print_tab/print_tab_s.c		print_tab/print_tab_x.c		print_tab/print_tab.c		\
+print_tab/print_tab_p.c		print_tab/print_tab_u.c		print_tab/print_tab_d.c 	\
+print_tab_utils/utoa_prec_base.c
 
 
 OBJ		= ${SRC:.c=.o}

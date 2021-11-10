@@ -25,7 +25,7 @@ static void	handle_flags(t_format *format)
 static void	get_arg(t_arg *arg, va_list args, char conv)
 {
 	if (conv == 'i' || conv == 'd')
-		arg->i = va_arg(args, int);
+		arg->d = va_arg(args, int);
 	else if (conv == 's')
 		arg->s = va_arg(args, const char *);
 	else if (conv == 'c')
@@ -38,8 +38,7 @@ static void	get_arg(t_arg *arg, va_list args, char conv)
 		arg->u = va_arg(args, unsigned int);
 }
 
-int	print_tab(t_format *format,
-			va_list args, int *printed_count)
+int	print_tab(t_format *format, va_list args, int *printed_count)
 {
 	char	conv;
 	int		error;
@@ -50,7 +49,7 @@ int	print_tab(t_format *format,
 	handle_flags(format);
 	get_arg(&arg, args, conv);
 	if (conv == 'i' || conv == 'd')
-		// TODO
+		print_tab_d(format, arg.d, printed_count, &error);
 	else if (conv == 's')
 		print_tab_s(format, arg.s, printed_count, &error);
 	else if (conv == 'c')

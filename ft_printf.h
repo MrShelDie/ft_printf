@@ -33,7 +33,7 @@ typedef union u_arg
 	unsigned int	u;
 	const char		*s;
 	void			*p;
-	int				i;
+	int				d;
 }	t_arg;
 
 int		parse(const char **str, t_format *format);
@@ -44,7 +44,7 @@ void	get_prec(const char **str, t_format *format);
 int		get_conv(const char **str, t_format *format);
 
 void	init_tab(t_format *format, char *tab, int size);
-void	print_tab(t_format *format, va_list args, int *printed_count);
+int		print_tab(t_format *format, va_list args, int *printed_count);
 void	print_tab_perc(int *printed_count);
 void	print_tab_c(t_format *format, unsigned char arg,
 			int *printed_count, int *error);
@@ -55,6 +55,8 @@ void	print_tab_x(t_format *format, size_t arg,
 void	print_tab_p(t_format *format, void *arg,
 			int *printed_count, int *error);
 void	print_tab_u(t_format *format, unsigned int arg,
+			int *printed_count, int *error);
+void	print_tab_d(t_format *format, int arg,
 			int *printed_count, int *error);
 
 char	*utoa_prec_base(size_t num, char *base, size_t base_size, int prec);
