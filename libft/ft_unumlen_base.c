@@ -1,6 +1,6 @@
 # include "libft.h"
 
-int	ft_ndigitu_base(unsigned int num, unsigned int base_size)
+int	ft_unumlen_base(size_t num, size_t base_size)
 {
 	int	count;
 

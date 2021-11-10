@@ -30,6 +30,8 @@ static void	get_arg(t_arg *arg, va_list args, char conv)
 		arg->s = va_arg(args, const char *);
 	else if (conv == 'x' || conv == 'X')
 		arg->x = va_arg(args, unsigned int);
+	else if (conv == 'p')
+		arg->p = va_arg(args, void *);
 }
 
 void	print_tab(t_format *format,
@@ -51,4 +53,6 @@ void	print_tab(t_format *format,
 		print_tab_s(format, arg.s, printed_count, &error);
 	else if (conv == 'x' || conv == 'X')
 		print_tab_x(format, arg.x, printed_count, &error);
+	else if (conv == 'p')
+		print_tab_p(format, arg.p, printed_count, &error);
 }

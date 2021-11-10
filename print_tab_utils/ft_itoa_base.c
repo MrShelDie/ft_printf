@@ -16,8 +16,8 @@
 // 		ft_memcpy(str, "0X", 2);
 // }
 
-char	*ft_itoa_base_prefix(
-	unsigned int num, char *base, unsigned int base_size, t_format *format
+char	*ft_itoa_base(
+	size_t num, char *base, size_t base_size, t_format *format
 )
 {
 	char	*str;

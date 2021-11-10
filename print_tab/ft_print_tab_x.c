@@ -1,12 +1,12 @@
 #include "../ft_printf.h"
 
-static int	get_tab_prec(t_format *format, unsigned int arg)
+static int	get_tab_prec(t_format *format, size_t arg)
 {
 	int	arg_len;
 
 	if (!format->is_prec_default && format->prec == 0 && arg == 0)
 		return (0);
-	arg_len = ft_ndigitu_base(arg, 16);
+	arg_len = ft_unumlen_base(arg, 16);
 	if (!format->is_prec_default && format->prec > arg_len)
 		return (format->prec);
 	else
@@ -30,10 +30,10 @@ static void	fill_tab(t_format *format, char *tab, char *num_str)
 {
 	char	prefix[2];
 
-	if (format->conv == 'x')
-		ft_memcpy(prefix, "0x", 2);
-	else
+	if (format->conv == 'X')
 		ft_memcpy(prefix, "0X", 2);
+	else
+		ft_memcpy(prefix, "0x", 2);
 	if (format->flag_minus)
 	{
 		if (format->flag_sharp)
@@ -54,14 +54,14 @@ static void	fill_tab(t_format *format, char *tab, char *num_str)
 	}
 }
 
-static int	puthex_tab(t_format *format, char *tab, unsigned int arg)
+static int	puthex_tab(t_format *format, char *tab, size_t arg)
 {
 	char	*num_str;
 
-	if (format->conv == 'x')
-		num_str = ft_itoa_base_prefix(arg, "0123456789abcdef", 16, format);
+	if (format->conv == 'X')
+		num_str = ft_itoa_base(arg, "0123456789ABCDEF", 16, format);
 	else
-		num_str = ft_itoa_base_prefix(arg, "0123456789ABCDEF", 16, format);
+		num_str = ft_itoa_base(arg, "0123456789abcdef", 16, format);
 	if (!num_str)
 		return (FAILE);
 	fill_tab(format, tab, num_str);
@@ -71,7 +71,7 @@ static int	puthex_tab(t_format *format, char *tab, unsigned int arg)
 }
 
 void	print_tab_x(
-	t_format *format, unsigned int arg, int *printed_count, int *error
+	t_format *format, size_t arg, int *printed_count, int *error
 )
 {
 	char	*tab;

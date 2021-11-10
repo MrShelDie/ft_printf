@@ -3,10 +3,15 @@
 
 int main(void)
 {
-	//ft_printf("_%s", NULL);
+	// int a = 1;
+	// int *p = &a;
 
-	int i = ft_printf("%.0x", 0);
-    printf("%d", i);
+	//ft_printf("_%p_", NULL);
+
+	int i = ft_printf("_%p_\n", (void *)-1);
+	// printf("_%p_\n", p);
+    printf("%p", ((void*)0));
+
 
 	return (0);
 }

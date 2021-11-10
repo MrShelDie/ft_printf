@@ -21,9 +21,9 @@ typedef struct s_format
 	unsigned int	flag_plus : 1;
 	unsigned int	is_width_default : 1;
 	unsigned int	is_prec_default : 1;
-	char			conv;
 	int				width;
 	int				prec;
+	char			conv;
 }	t_format;
 
 typedef union u_arg
@@ -31,6 +31,8 @@ typedef union u_arg
 	unsigned char	c;
 	unsigned int	x;
 	const char		*s;
+	void			*p;
+	size_t			i;
 }	t_arg;
 
 int		parse(const char **str, t_format *format);
@@ -47,11 +49,13 @@ void	print_tab_c(t_format *format, unsigned char arg,
 			int *printed_count, int *error);
 void	print_tab_s(t_format *format, const char *arg,
 			int *printed_count, int *error);
-void	print_tab_x(t_format *format, unsigned int arg,
+void	print_tab_x(t_format *format, size_t arg,
+			int *printed_count, int *error);
+void	print_tab_p(t_format *format, void *arg,
 			int *printed_count, int *error);
 
-char	*ft_itoa_base_prefix(unsigned int num, char *base,
-			unsigned int base_size, t_format *format);
+char	*ft_itoa_base(size_t num, char *base,
+			size_t base_size, t_format *format);
 
 int		ft_printf(const char *str, ...);
 

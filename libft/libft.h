@@ -6,7 +6,7 @@
 /*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 13:01:02 by gannemar          #+#    #+#             */
-/*   Updated: 2021/11/08 22:31:33 by nick             ###   ########.fr       */
+/*   Updated: 2021/11/10 15:40:03 by nick             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
-int		ft_ndigit_base(int num, unsigned int base);
-int		ft_ndigitu_base(unsigned int num, unsigned int base_size);
+int		ft_unumlen_base(size_t num, size_t base_size);
 
 #endif
