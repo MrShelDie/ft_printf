@@ -71,13 +71,11 @@ static int	puthex_tab(t_format *format, char *tab, unsigned int arg)
 }
 
 void	print_tab_x(
-	t_format *format, va_list args, int *printed_count, int *error
+	t_format *format, unsigned int arg, int *printed_count, int *error
 )
 {
-	char			*tab;
-	unsigned int	arg;
+	char	*tab;
 
-	arg = va_arg(args, unsigned int);
 	if (arg == 0)
 		format->flag_sharp = FALSE;
 	format->prec = get_tab_prec(format, arg);

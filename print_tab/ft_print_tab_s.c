@@ -28,13 +28,11 @@ static void	putstr_tab(t_format *format, char *tab, const char *arg)
 }
 
 void	print_tab_s(
-	t_format *format, va_list args, int *printed_count, int *error
+	t_format *format, const char *arg, int *printed_count, int *error
 )
 {
-	char		*tab;
-	const char	*arg;
+	char	*tab;
 
-	arg = va_arg(args, const char *);
 	if (!arg)
 		arg = "(null)";
 	format->prec = get_tab_prec(format, arg);

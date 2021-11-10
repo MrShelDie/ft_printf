@@ -26,6 +26,13 @@ typedef struct s_format
 	int				prec;
 }	t_format;
 
+typedef union u_arg
+{
+	unsigned char	c;
+	unsigned int	x;
+	const char		*s;
+}	t_arg;
+
 int		parse(const char **str, t_format *format);
 void	init_format(t_format *format);
 void	get_flags(const char **str, t_format *format);
@@ -36,11 +43,11 @@ int		get_conv(const char **str, t_format *format);
 void	init_tab(t_format *format, char *tab, int size);
 void	print_tab(t_format *format, va_list args, int *printed_count);
 void	print_tab_perc(int *printed_count);
-void	print_tab_c(t_format *format, va_list args,
+void	print_tab_c(t_format *format, unsigned char arg,
 			int *printed_count, int *error);
-void	print_tab_s(t_format *format, va_list args,
+void	print_tab_s(t_format *format, const char *arg,
 			int *printed_count, int *error);
-void	print_tab_x(t_format *format, va_list args,
+void	print_tab_x(t_format *format, unsigned int arg,
 			int *printed_count, int *error);
 
 char	*ft_itoa_base_prefix(unsigned int num, char *base,
