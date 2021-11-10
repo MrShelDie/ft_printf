@@ -35,6 +35,8 @@ void	print_tab_s(
 	const char	*arg;
 
 	arg = va_arg(args, const char *);
+	if (!arg)
+		arg = "(null)";
 	format->prec = get_tab_prec(format, arg);
 	format->width = get_tab_width(format);
 	tab = (char *)malloc(sizeof(char) * (format->width + 1));

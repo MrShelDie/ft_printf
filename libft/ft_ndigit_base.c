@@ -8,6 +8,8 @@ int	ft_ndigit_base(int num, unsigned int base)
 
 	if (base == 0)
 		return (0);
+	if (num == 0)
+		return (1);
 	count = 0;
 	lnum = (long int)num;
 	lbase = (long int)base;

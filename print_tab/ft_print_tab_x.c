@@ -4,6 +4,8 @@ static int	get_tab_prec(t_format *format, unsigned int arg)
 {
 	int	arg_len;
 
+	if (!format->is_prec_default && format->prec == 0 && arg == 0)
+		return (0);
 	arg_len = ft_ndigitu_base(arg, 16);
 	if (!format->is_prec_default && format->prec > arg_len)
 		return (format->prec);
@@ -76,6 +78,8 @@ void	print_tab_x(
 	unsigned int	arg;
 
 	arg = va_arg(args, unsigned int);
+	if (arg == 0)
+		format->flag_sharp = FALSE;
 	format->prec = get_tab_prec(format, arg);
 	format->width = get_tab_width(format);
 	tab = (char *)malloc(sizeof(char) * (format->width + 1));

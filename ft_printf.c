@@ -46,9 +46,3 @@ int	ft_printf(const char *str, ...)
 	va_end(args);
 	return (printed_count);
 }
-
-int main(void)
-{
-	ft_printf("_%-#X_", 237);
-	return (0);
-}

@@ -46,4 +46,6 @@ void	print_tab_x(t_format *format, va_list args,
 char	*ft_itoa_base_prefix(unsigned int num, char *base,
 			unsigned int base_size, t_format *format);
 
+int		ft_printf(const char *str, ...);
+
 #endif
