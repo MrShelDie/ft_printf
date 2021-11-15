@@ -20,23 +20,25 @@ ft_lstclear.c	ft_lstiter.c		ft_lstmap.c
 OBJ			= ${SRC:.c=.o}
 OBJ_BONUS	= ${SRC_BONUS:.c=.o}
 
+HEDR		= libft.h
+
 NAME		= libft.a
 
-TMPFILE		= .tmp_file
+CFLSGS		= -Wall -Werror -Wextra
 
-CFLSGS	= -Wall -Werror -Wextra
+INCL		= -I.
 
 
-%.o:	%.c
-	gcc -c ${CFLSGS} $< -o $@
+%.o:	%.c ${HEDR}
+	gcc -c ${CFLSGS} ${INCL} $< -o $@
 
-all:	${SRC} ${NAME}
+all:	${NAME}
 
 ${NAME}:	${OBJ}
 	ar rcs ${NAME} ${OBJ}
 
-bonus:	${NAME} ${OBJ_BONUS}
-	ar rcs ${NAME} ${OBJ_BONUS}
+bonus: ${OBJ} ${OBJ_BONUS} 
+	ar rcs ${NAME} ${OBJ} ${OBJ_BONUS}
 
 clean:
 	rm -f ${OBJ} ${OBJ_BONUS}
