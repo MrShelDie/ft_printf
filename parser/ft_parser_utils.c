@@ -1,13 +1,13 @@
 #include "../ft_printf.h"
 
-void	init_format(t_format *format)
+void	ft_init_format(t_format *format)
 {
 	ft_bzero(format, sizeof(t_format));
 	format->is_width_default = TRUE;
 	format->is_prec_default = TRUE;
 }
 
-void	get_flags(const char **str, t_format *format)
+void	ft_get_flags(const char **str, t_format *format)
 {
 	char	c;
 
@@ -30,7 +30,7 @@ void	get_flags(const char **str, t_format *format)
 	}
 }
 
-void	get_width(const char **str, t_format *format)
+void	ft_get_width(const char **str, t_format *format)
 {
 	if (!ft_isdigit(**str))
 		return ;
@@ -40,7 +40,7 @@ void	get_width(const char **str, t_format *format)
 		(*str)++;
 }
 
-void	get_prec(const char **str, t_format *format)
+void	ft_get_prec(const char **str, t_format *format)
 {
 	if (**str != '.')
 		return ;
@@ -51,7 +51,7 @@ void	get_prec(const char **str, t_format *format)
 		(*str)++;
 }
 
-int	get_conv(const char **str, t_format *format)
+int	ft_get_conv(const char **str, t_format *format)
 {
 	char	c;
 

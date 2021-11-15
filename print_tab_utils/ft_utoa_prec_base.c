@@ -1,6 +1,6 @@
 #include "../ft_printf.h"
 
-char	*utoa_prec_base(size_t num, char *base, size_t base_size, int prec)
+char	*ft_utoa_prec_base(size_t num, char *base, size_t base_size, int prec)
 {
 	char	*str;
 

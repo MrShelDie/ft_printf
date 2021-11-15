@@ -1,6 +1,6 @@
 #include "../ft_printf.h"
 
-static void	handle_flags(t_format *format)
+static void	ft_handle_flags(t_format *format)
 {
 	char	conv;
 
@@ -22,7 +22,7 @@ static void	handle_flags(t_format *format)
 		format->flag_space = FALSE;
 }
 
-static void	get_arg(t_arg *arg, va_list args, char conv)
+static void	ft_get_arg(t_arg *arg, va_list args, char conv)
 {
 	if (conv == 'i' || conv == 'd')
 		arg->d = va_arg(args, int);
@@ -38,7 +38,7 @@ static void	get_arg(t_arg *arg, va_list args, char conv)
 		arg->u = va_arg(args, unsigned int);
 }
 
-int	print_tab(t_format *format, va_list args, int *printed_count)
+int	ft_print_tab(t_format *format, va_list args, int *printed_count)
 {
 	char	conv;
 	int		error;
@@ -46,22 +46,22 @@ int	print_tab(t_format *format, va_list args, int *printed_count)
 
 	error = 0;
 	conv = format->conv;
-	handle_flags(format);
-	get_arg(&arg, args, conv);
+	ft_handle_flags(format);
+	ft_get_arg(&arg, args, conv);
 	if (conv == 'i' || conv == 'd')
-		print_tab_d(format, arg.d, printed_count, &error);
+		ft_print_tab_d(format, arg.d, printed_count, &error);
 	else if (conv == 's')
-		print_tab_s(format, arg.s, printed_count, &error);
+		ft_print_tab_s(format, arg.s, printed_count, &error);
 	else if (conv == 'c')
-		print_tab_c(format, arg.c, printed_count, &error);
+		ft_print_tab_c(format, arg.c, printed_count, &error);
 	else if (conv == 'p')
-		print_tab_p(format, arg.p, printed_count, &error);
+		ft_print_tab_p(format, arg.p, printed_count, &error);
 	else if (conv == 'x' || conv == 'X')
-		print_tab_x(format, arg.x, printed_count, &error);
+		ft_print_tab_x(format, arg.x, printed_count, &error);
 	else if (conv == 'u')
-		print_tab_u(format, arg.u, printed_count, &error);
+		ft_print_tab_u(format, arg.u, printed_count, &error);
 	else if (conv == '%')
-		print_tab_perc(printed_count);
+		ft_print_tab_perc(printed_count);
 	if (error)
 		return (FAILE);
 	return (SUCCESS);

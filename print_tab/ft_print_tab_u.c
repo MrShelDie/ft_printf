@@ -12,18 +12,18 @@ static int	get_tab_prec(t_format *format, unsigned int arg)
 	return (arg_len);
 }
 
-static int	get_tab_width(t_format *format)
+static int	ft_get_tab_width(t_format *format)
 {
 	if (!format->is_width_default && format->width > format->prec)
 		return (format->width);
 	return (format->prec);
 }
 
-static int	put_tab(t_format *format, char *tab, unsigned int arg)
+static int	ft_put_tab(t_format *format, char *tab, unsigned int arg)
 {
 	char	*num_str;
 
-	num_str = utoa_prec_base(arg, "0123456789", 10, format->prec);
+	num_str = ft_utoa_prec_base(arg, "0123456789", 10, format->prec);
 	if (!num_str)
 		return (FAILE);
 	if (format->flag_minus)
@@ -35,22 +35,22 @@ static int	put_tab(t_format *format, char *tab, unsigned int arg)
 	return (SUCCESS);
 }
 
-void	print_tab_u(
+void	ft_print_tab_u(
 	t_format *format, unsigned int arg, int *printed_count, int *error
 )
 {
 	char	*tab;
 
 	format->prec = get_tab_prec(format, arg);
-	format->width = get_tab_width(format);
+	format->width = ft_get_tab_width(format);
 	tab = (char *)malloc(sizeof(char) * (format->width) + 1);
 	if (!tab)
 	{
 		*error = 1;
 		return ;
 	}
-	init_tab(format, tab, format->width + 1);
-	if (!put_tab(format, tab, arg))
+	ft_init_tab(format, tab, format->width + 1);
+	if (!ft_put_tab(format, tab, arg))
 	{
 		*error = 1;
 		free(tab);

@@ -1,20 +1,20 @@
 #include "ft_printf.h"
 
-static int	print_spec(const char **str, va_list args, int *printed_count)
+static int	ft_print_spec(const char **str, va_list args, int *printed_count)
 {
 	t_format	format;
 
 	if (**str != '%')
 		return (SUCCESS);
-	init_format(&format);
-	if (!parse(str, &format))
+	ft_init_format(&format);
+	if (!ft_parse(str, &format))
 		return (FAILE);
-	if (!print_tab(&format, args, printed_count))
+	if (!ft_print_tab(&format, args, printed_count))
 		return (FAILE);
 	return (SUCCESS);
 }
 
-static void	print_not_spec(const char **str, int *printed_count)
+static void	ft_print_not_spec(const char **str, int *printed_count)
 {
 	int	write_size;
 
@@ -37,8 +37,8 @@ int	ft_printf(const char *str, ...)
 	va_start(args, str);
 	while (*str)
 	{
-		print_not_spec(&str, &printed_count);
-		if (!print_spec(&str, args, &printed_count))
+		ft_print_not_spec(&str, &printed_count);
+		if (!ft_print_spec(&str, args, &printed_count))
 		{
 			printed_count = -1;
 			break ;

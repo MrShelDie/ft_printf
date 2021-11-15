@@ -14,16 +14,16 @@
 
 typedef struct s_format
 {
-	unsigned int	flag_sharp : 1;
-	unsigned int	flag_zero : 1;
-	unsigned int	flag_minus : 1;
-	unsigned int	flag_space : 1;
-	unsigned int	flag_plus : 1;
-	unsigned int	is_width_default : 1;
-	unsigned int	is_prec_default : 1;
-	int				width;
-	int				prec;
-	char			conv;
+	int		flag_sharp;
+	int		flag_zero;
+	int		flag_minus;
+	int		flag_space;
+	int		flag_plus;
+	int		is_width_default;
+	int		is_prec_default;
+	int		width;
+	int		prec;
+	char	conv;
 }	t_format;
 
 typedef union u_arg
@@ -36,30 +36,36 @@ typedef union u_arg
 	int				d;
 }	t_arg;
 
-int		parse(const char **str, t_format *format);
-void	init_format(t_format *format);
-void	get_flags(const char **str, t_format *format);
-void	get_width(const char **str, t_format *format);
-void	get_prec(const char **str, t_format *format);
-int		get_conv(const char **str, t_format *format);
+int		ft_parse(const char **str, t_format *format);
+void	ft_init_format(t_format *format);
+void	ft_get_flags(const char **str, t_format *format);
+void	ft_get_width(const char **str, t_format *format);
+void	ft_get_prec(const char **str, t_format *format);
+int		ft_get_conv(const char **str, t_format *format);
 
-void	init_tab(t_format *format, char *tab, int size);
-int		print_tab(t_format *format, va_list args, int *printed_count);
-void	print_tab_perc(int *printed_count);
-void	print_tab_c(t_format *format, unsigned char arg,
+void	ft_init_tab(t_format *format, char *tab, int size);
+int		ft_print_tab(t_format *format, va_list args, int *printed_count);
+void	ft_print_tab_perc(int *printed_count);
+void	ft_print_tab_c(t_format *format, unsigned char arg,
 			int *printed_count, int *error);
-void	print_tab_s(t_format *format, const char *arg,
+void	ft_print_tab_s(t_format *format, const char *arg,
 			int *printed_count, int *error);
-void	print_tab_x(t_format *format, size_t arg,
+void	ft_print_tab_x(t_format *format, size_t arg,
 			int *printed_count, int *error);
-void	print_tab_p(t_format *format, void *arg,
+void	ft_print_tab_p(t_format *format, void *arg,
 			int *printed_count, int *error);
-void	print_tab_u(t_format *format, unsigned int arg,
+void	ft_print_tab_u(t_format *format, unsigned int arg,
 			int *printed_count, int *error);
-void	print_tab_d(t_format *format, int arg,
+void	ft_print_tab_d(t_format *format, int arg,
 			int *printed_count, int *error);
 
-char	*utoa_prec_base(size_t num, char *base, size_t base_size, int prec);
+char	*ft_utoa_prec_base(size_t num, char *base, size_t base_size, int prec);
+int		ft_unumlen_base(size_t num, size_t base_size);
+
+int		ft_isdigit(int c);
+int		ft_atoi(const char *str);
+void	ft_bzero(void *s, size_t n);
+void	*ft_memset(void *b, int c, size_t len);
 
 int		ft_printf(const char *str, ...);
 

@@ -1,6 +1,6 @@
 #include "../ft_printf.h"
 
-static int	get_tab_prec(t_format *format, int arg)
+static int	ft_get_tab_prec(t_format *format, int arg)
 {
 	int			arg_len;
 	long int	larg;
@@ -16,7 +16,7 @@ static int	get_tab_prec(t_format *format, int arg)
 	return (arg_len);
 }
 
-static int	get_tab_width(t_format *format, int arg)
+static int	ft_get_tab_width(t_format *format, int arg)
 {
 	int	width;
 
@@ -28,7 +28,7 @@ static int	get_tab_width(t_format *format, int arg)
 	return (width);
 }
 
-static void	fill_tab(t_format *format, char *tab, char *num_str, int arg)
+static void	ft_fill_tab(t_format *format, char *tab, char *num_str, int arg)
 {
 	size_t	sign_pos;
 
@@ -57,7 +57,7 @@ static void	fill_tab(t_format *format, char *tab, char *num_str, int arg)
 	}
 }
 
-static int	put_tab(t_format *format, char *tab, int arg)
+static int	ft_put_tab(t_format *format, char *tab, int arg)
 {
 	char		*num_str;
 	long int	larg;
@@ -66,17 +66,17 @@ static int	put_tab(t_format *format, char *tab, int arg)
 	if (arg < 0)
 	{
 		larg *= -1;
-		num_str = utoa_prec_base((size_t)larg, "0123456789", 10, format->prec);
+		num_str = ft_utoa_prec_base((size_t)larg, "0123456789", 10, format->prec);
 	}
 	else
-		num_str = utoa_prec_base((size_t)larg, "0123456789", 10, format->prec);
-	fill_tab(format, tab, num_str, arg);
+		num_str = ft_utoa_prec_base((size_t)larg, "0123456789", 10, format->prec);
+	ft_fill_tab(format, tab, num_str, arg);
 	write(1, tab, format->width);
 	free(num_str);
 	return (SUCCESS);
 }
 
-void	print_tab_d(
+void	ft_print_tab_d(
 	t_format *format, int arg, int *printed_count, int *error
 )
 {
@@ -87,16 +87,16 @@ void	print_tab_d(
 		format->flag_space = FALSE;
 		format->flag_plus = FALSE;
 	}
-	format->prec = get_tab_prec(format, arg);
-	format->width = get_tab_width(format, arg);
+	format->prec = ft_get_tab_prec(format, arg);
+	format->width = ft_get_tab_width(format, arg);
 	tab = (char *)malloc(sizeof(char) * (format->width + 1));
 	if (!tab)
 	{
 		*error = 1;
 		return ;
 	}
-	init_tab(format, tab, format->width + 1);
-	if (!put_tab(format, tab, arg))
+	ft_init_tab(format, tab, format->width + 1);
+	if (!ft_put_tab(format, tab, arg))
 	{
 		*error = 1;
 		free(tab);
