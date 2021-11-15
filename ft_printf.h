@@ -45,7 +45,7 @@ int		ft_get_conv(const char **str, t_format *format);
 
 void	ft_init_tab(t_format *format, char *tab, int size);
 int		ft_print_tab(t_format *format, va_list args, int *printed_count);
-void	ft_print_tab_perc(int *printed_count);
+void	ft_print_tab_perc(t_format *format, int *printed_count, int *error);
 void	ft_print_tab_c(t_format *format, unsigned char arg,
 			int *printed_count, int *error);
 void	ft_print_tab_s(t_format *format, const char *arg,

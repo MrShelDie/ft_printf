@@ -7,10 +7,7 @@ static void	ft_handle_flags(t_format *format)
 	conv = format->conv;
 	if (conv != 'x' && conv != 'X')
 		format->flag_sharp = FALSE;
-	if (format->flag_minus || !format->is_prec_default
-		|| conv == 'c' || conv == 's'
-		|| conv == 'p' || conv == '%'
-	)
+	if (format->flag_minus || conv == 'c' || conv == 'p')
 		format->flag_zero = FALSE;
 	if (!format->is_prec_default
 		&& (conv == 'd' || conv == 'i'
@@ -61,7 +58,7 @@ int	ft_print_tab(t_format *format, va_list args, int *printed_count)
 	else if (conv == 'u')
 		ft_print_tab_u(format, arg.u, printed_count, &error);
 	else if (conv == '%')
-		ft_print_tab_perc(printed_count);
+		ft_print_tab_perc(format, printed_count, &error);
 	if (error)
 		return (FAILE);
 	return (SUCCESS);

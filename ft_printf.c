@@ -9,6 +9,8 @@ static int	ft_print_spec(const char **str, va_list args, int *printed_count)
 	ft_init_format(&format);
 	if (!ft_parse(str, &format))
 		return (FAILE);
+	if (format.conv == '\0')
+		return (SUCCESS);
 	if (!ft_print_tab(&format, args, printed_count))
 		return (FAILE);
 	return (SUCCESS);

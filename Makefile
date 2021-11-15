@@ -17,7 +17,7 @@ CFLSGS	= -Wall -Werror -Wextra
 INCL	= -I.
 
 
-%.o:	%.c
+%.o:	%.c ${HEDR}
 	gcc -c ${CFLSGS} ${INCL} $< -o $@
 
 all:	${NAME}

@@ -56,6 +56,8 @@ int	ft_get_conv(const char **str, t_format *format)
 	char	c;
 
 	c = **str;
+	if (c == '\0')
+		return (SUCCESS);
 	if (c == 'c' || c == 's' || c == 'p'
 		|| c == 'd' || c == 'i' || c == 'u'
 		|| c == 'x' || c == 'X' || c == '%')

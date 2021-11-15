@@ -1,7 +1,6 @@
 #include "../ft_printf.h"
 
-void	ft_print_tab_perc(int *printed_count)
+void	ft_print_tab_perc(t_format *format, int *printed_count, int *error)
 {
-	write(1, "%", 1);
-	(*printed_count)++;
+	ft_print_tab_s(format, "%", printed_count, error);
 }
