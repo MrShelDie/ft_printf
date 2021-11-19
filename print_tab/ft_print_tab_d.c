@@ -6,7 +6,7 @@
 /*   By: gannemar <gannemar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 15:11:36 by gannemar          #+#    #+#             */
-/*   Updated: 2021/11/19 15:11:59 by gannemar         ###   ########.fr       */
+/*   Updated: 2021/11/19 15:28:33 by gannemar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ static int	ft_put_tab(t_format *format, char *tab, int arg)
 	else
 		num_str = ft_utoa_prec_base(
 				(size_t)larg, "0123456789", 10, format->prec);
+	if (!num_str)
+		return (FAILE);
 	ft_fill_tab(format, tab, num_str, arg);
 	write(1, tab, format->width);
 	free(num_str);
