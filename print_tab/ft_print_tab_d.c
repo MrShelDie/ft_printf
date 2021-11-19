@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_tab_d.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gannemar <gannemar@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/19 15:11:36 by gannemar          #+#    #+#             */
+/*   Updated: 2021/11/19 15:11:59 by gannemar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../ft_printf.h"
 
 static int	ft_get_tab_prec(t_format *format, int arg)
@@ -66,10 +78,12 @@ static int	ft_put_tab(t_format *format, char *tab, int arg)
 	if (arg < 0)
 	{
 		larg *= -1;
-		num_str = ft_utoa_prec_base((size_t)larg, "0123456789", 10, format->prec);
+		num_str = ft_utoa_prec_base(
+				(size_t)larg, "0123456789", 10, format->prec);
 	}
 	else
-		num_str = ft_utoa_prec_base((size_t)larg, "0123456789", 10, format->prec);
+		num_str = ft_utoa_prec_base(
+				(size_t)larg, "0123456789", 10, format->prec);
 	ft_fill_tab(format, tab, num_str, arg);
 	write(1, tab, format->width);
 	free(num_str);
