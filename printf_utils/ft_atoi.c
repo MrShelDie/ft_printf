@@ -6,11 +6,11 @@
 /*   By: gannemar <gannemar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 12:34:29 by gannemar          #+#    #+#             */
-/*   Updated: 2021/10/15 19:40:28 by gannemar         ###   ########.fr       */
+/*   Updated: 2021/11/25 19:39:09 by gannemar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../ft_printf.h"
 
 static void	ft_skip_spaces(const char **str)
 {
@@ -31,9 +31,9 @@ static	int	ft_get_sign(const char **str)
 	return (0);
 }
 
-static long int	ft_str_to_num(const char **str, int *ndigit)
+static long long int	ft_str_to_num(const char **str, int *ndigit)
 {
-	long int	num;
+	long long int	num;
 
 	num = 0;
 	while (ft_isdigit(**str))
@@ -45,11 +45,11 @@ static long int	ft_str_to_num(const char **str, int *ndigit)
 	return (num);
 }
 
-int	ft_atoi(const char *str)
+int	ft_atoi(const char *str, int *error)
 {
-	int			is_neg;
-	int			ndigit;
-	long int	num;
+	int				is_neg;
+	int				ndigit;
+	long long int	num;
 
 	num = 0;
 	is_neg = 0;
@@ -57,12 +57,8 @@ int	ft_atoi(const char *str)
 	ft_skip_spaces(&str);
 	is_neg = ft_get_sign(&str);
 	num = ft_str_to_num(&str, &ndigit);
-	if (ndigit > 19)
-	{
-		if (is_neg)
-			return (0);
-		return (-1);
-	}
+	if (num >= INT_MAX || ndigit > 19)
+		*error = 1;
 	if (is_neg)
 		num *= -1;
 	return ((int)num);

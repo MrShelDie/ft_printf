@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gannemar <gannemar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/05 17:43:07 by gannemar          #+#    #+#             */
-/*   Updated: 2021/10/15 19:40:34 by gannemar         ###   ########.fr       */
+/*   Created: 2021/10/05 18:02:10 by gannemar          #+#    #+#             */
+/*   Updated: 2021/11/25 18:22:28 by gannemar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isascii(int c)
+#include "../ft_printf.h"
+
+size_t	ft_strlen(const char *s)
 {
-	if (c >= 0 && c <= 127)
-		return (1);
-	return (0);
+	size_t	i;
+
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	return (i);
 }

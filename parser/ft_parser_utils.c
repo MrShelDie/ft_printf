@@ -6,7 +6,7 @@
 /*   By: gannemar <gannemar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 15:11:11 by gannemar          #+#    #+#             */
-/*   Updated: 2021/11/19 15:11:12 by gannemar         ###   ########.fr       */
+/*   Updated: 2021/11/25 19:45:02 by gannemar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,41 +42,41 @@ void	ft_get_flags(const char **str, t_format *format)
 	}
 }
 
-void	ft_get_width(const char **str, t_format *format)
+void	ft_get_width(const char **str, t_format *format, int *error)
 {
 	if (!ft_isdigit(**str))
 		return ;
-	format->width = ft_atoi(*str);
+	format->width = ft_atoi(*str, error);
 	format->is_width_default = FALSE;
 	while (ft_isdigit(**str))
 		(*str)++;
 }
 
-void	ft_get_prec(const char **str, t_format *format)
+void	ft_get_prec(const char **str, t_format *format, int *error)
 {
 	if (**str != '.')
 		return ;
 	(*str)++;
-	format->prec = ft_atoi(*str);
+	format->prec = ft_atoi(*str, error);
 	format->is_prec_default = FALSE;
 	while (ft_isdigit(**str))
 		(*str)++;
 }
 
-int	ft_get_conv(const char **str, t_format *format)
+void	ft_get_conv(const char **str, t_format *format, int *error)
 {
 	char	c;
 
 	c = **str;
 	if (c == '\0')
-		return (SUCCESS);
+		return ;
 	if (c == 'c' || c == 's' || c == 'p'
 		|| c == 'd' || c == 'i' || c == 'u'
 		|| c == 'x' || c == 'X' || c == '%')
 	{
 		format->conv = c;
 		(*str)++;
-		return (SUCCESS);
+		return ;
 	}
-	return (FAILE);
+	*error = 1;
 }

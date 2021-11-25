@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gannemar <gannemar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/08 12:51:17 by gannemar          #+#    #+#             */
-/*   Updated: 2021/10/15 19:41:07 by gannemar         ###   ########.fr       */
+/*   Created: 2021/10/05 18:16:04 by gannemar          #+#    #+#             */
+/*   Updated: 2021/11/25 18:37:53 by gannemar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../ft_printf.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+void	*ft_memset(void *b, int c, size_t len)
 {
 	size_t	i;
 
-	if (dest == NULL && src == NULL)
-		return (NULL);
-	if (dest < src)
+	i = 0;
+	while (i < len)
 	{
-		i = 0;
-		while (i < n)
-		{
-			((char *)dest)[i] = ((char *)src)[i];
-			i++;
-		}
+		((char *)b)[i] = (unsigned char)c;
+		i++;
 	}
-	else
-	{
-		while (n > 0)
-		{
-			n--;
-			((char *)dest)[n] = ((char *)src)[n];
-		}
-	}
-	return (dest);
+	return (b);
 }
